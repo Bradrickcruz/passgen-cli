@@ -1,0 +1,25 @@
+{
+  "name": "passgen-cli",
+  "version": "1.0.0",
+  "description": "Um exemplo de CLI feito com TypeScript para gerar senhas fortes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "bin": {
+    "passgen": "./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
