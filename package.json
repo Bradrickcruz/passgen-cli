@@ -11,9 +11,18 @@
   "bin": {
     "psg": "./dist/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cli",
+    "typescript",
+    "password",
+    "generator",
+    "strong",
+    "passwords",
+    "chalk",
+    "commander"
+  ],
+  "author": "Bryan H. Cruz Souza",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.10.2",
     "ts-node": "^10.9.2",
