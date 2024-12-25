@@ -9,7 +9,8 @@ Ideal para desenvolvedores e usuários que precisam de um gerador rápido e simp
 
 - Geração de senhas fortes com comprimento customizável.
 - Opções simples e intuitivas para o usuário.
-- Implementado com TypeScript para maior confiabilidade e escalabilidade.
+- Implementado com **TypeScript** para maior confiabilidade e escalabilidade.
+- Construído com o **Bun**, garantindo maior performance e eficiência.
 
 ---
 
@@ -17,7 +18,12 @@ Ideal para desenvolvedores e usuários que precisam de um gerador rápido e simp
 
 ### Pré-requisitos:
 
-Certifique-se de ter o Node.js (versão 16 ou superior) instalado na sua máquina.
+Certifique-se de ter o Bun (https://bun.sh) instalado na sua máquina.
+Se necessário, instale-o com o comando:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
 
 1. Clone o repositório:
 
@@ -50,41 +56,66 @@ Certifique-se de ter o Node.js (versão 16 ou superior) instalado na sua máquin
 
 Depois de instalar, você pode usar o passgen-cli diretamente no terminal.
 
-1. Gerar uma senha com uma quantidade específica de caracteres:
+### Gerar uma senha com uma quantidade específica de caracteres
 
-    ```bash
-    psg -l <número>
-    ```
+```bash
+psg -l <número>
+```
 
-    Exemplo:
+Exemplo:
 
-    ```bash
-    psg -l 16
-    ```
+```bash
+psg -l 16
+```
 
-    Saída:
+Saída:
 
-    ```bash
-    R8$k1&PxZ4@dQc5!
-    ```
+```bash
+R8$k1&PxZ4@dQc5!
+```
 
-2. Usar o comando explícito generate:
+### Usar o comando explícito generate
 
-    ```bash
-    psg generate <número>
-    ```
+```bash
+psg generate <número>
+```
 
-    Exemplo:
+Exemplo:
 
-    ```bash
-    psg generate 22
-    ```
+```bash
+psg generate 22
+```
 
-3. Exibir a ajuda:
+#### Opções adicionais no comando generate
 
-    ```bash
-    psg --help
-    ```
+Você pode personalizar as características da senha gerada com as seguintes opções:
+
+- `-nn, --no-numbers`: Remove números da senha.
+- `-ns, --no-symbols`: Remove símbolos da senha.
+- `-nu, --no-uppercase`: Remove letras maiúsculas da senha.
+
+Exemplo:
+Gerar uma senha de 12 caracteres sem números nem símbolos:
+
+```bash
+psg generate 12 -nn -ns
+```
+
+### Exibir a ajuda
+
+```bash
+psg --help
+```
+
+---
+
+## TODO
+
+- [ ] Implementar testes unitários para garantir a qualidade e robustez do projeto.
+- [ ] Adicionar um comando para validar a força de senhas fornecidas pelo usuário.
+- [ ] Adicionar histórico de senhas geradas.
+
+---
 
 ## Licença
 
