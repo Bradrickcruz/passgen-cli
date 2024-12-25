@@ -6,7 +6,7 @@ import { generateCommand } from "./commands/generate";
 const program = new Command();
 
 program
-  .name('psg: PassGen CLI')
+  .name('psg')
   .description('Gerador de senhas fortes')
   .version('1.0.0')
 
