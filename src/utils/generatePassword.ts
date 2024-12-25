@@ -1,4 +1,5 @@
 import { styledLog } from './styledLog';
+import { randomBytes } from 'crypto';
 
 export interface IPasswordOptions {
   useLowercase?: boolean;
@@ -30,9 +31,12 @@ export const generatePassword = (
     return '';
   }
 
+  const charactersLength = characters.length;
+  const randomBytesArray = randomBytes(length);
   let password = '';
+
   for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
+    const randomIndex = randomBytesArray[i] % charactersLength;
     password += characters[randomIndex];
   }
 
