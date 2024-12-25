@@ -1,3 +1,15 @@
 #! /usr/bin/env node
 
-console.log("Bem-vindo ao meu CLI em TypeScript!");
+import { Command } from 'commander';
+import { generateCommand } from "./commands/generate";
+
+const program = new Command();
+
+program
+  .name('passgen-cli')
+  .description('Um exemplo de CLI feito com TypeScript para gerar senhas fortes')
+  .version('1.0.0');
+
+program.addCommand(generateCommand);
+
+program.parse(process.argv);
