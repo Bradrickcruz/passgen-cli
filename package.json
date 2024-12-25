@@ -9,7 +9,7 @@
     "build": "tsc"
   },
   "bin": {
-    "passgen": "./dist/index.js"
+    "psg": "./dist/index.js"
   },
   "keywords": [],
   "author": "",
