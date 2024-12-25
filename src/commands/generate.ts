@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { generatePassword } from '../utils/password';
+import { generatePassword } from '../utils/generatePassword';
 import chalk from 'chalk';
 
 const generateCommand = new Command('generate')
