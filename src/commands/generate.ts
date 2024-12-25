@@ -35,7 +35,7 @@ export const generateCommand = new Command('generate')
 
     const password = generatePassword(passwordLength, passwordOptions);
     if (password !== '')
-      styledLog(`Sua senha gerada é:\n ${password}`, 'success');
+      styledLog(password, 'success');
   });
 
 const generateValidation = (
