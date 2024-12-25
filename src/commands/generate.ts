@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import { generatePassword } from '../utils/generatePassword';
-import chalk from 'chalk';
+import { styledLog } from '../utils/styledLog';
 
 const generateCommand = new Command('generate')
   .description('Gera uma senha forte baseada no número de caracteres')
@@ -10,21 +10,14 @@ const generateCommand = new Command('generate')
       const lengthAsNumber = parseInt(options.length, 10);
 
       if (isNaN(lengthAsNumber) || lengthAsNumber <= 0) {
-        console.error(
-          chalk.red('Por favor, forneça um número válido maior que 0.')
-        );
+        styledLog('Por favor, forneça um número válido maior que 0.', 'error');
         return;
       }
 
       const password = generatePassword(lengthAsNumber);
-      console.log(chalk.green(`Sua senha gerada é: ${password}`));
-    } else {
-      console.log(
-        chalk.yellow(
-          'Use "psg generate -l <length>" ou "-l <length>" para gerar uma senha.'
-        )
-      );
-    }
+      styledLog(`Sua senha gerada é:\n ${password}`, 'success');
+    } else
+      styledLog('Por favor, forneça um número de caracteres para a senha.', 'warn');
   });
 
 export { generateCommand };
