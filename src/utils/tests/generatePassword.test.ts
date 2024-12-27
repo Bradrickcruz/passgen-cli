@@ -39,8 +39,18 @@ describe('generatePassword', () => {
   });
 
   it('should show error message and return empty string if no character types are specified', () => {
-    const password = generatePassword(10, {})
-    expect(password).toBe('');
+    const passwordEmptyCharTypes = generatePassword(10, {})
+    expect(passwordEmptyCharTypes).toBe('');
+    expect(styledLogSpy).toHaveBeenCalledTimes(1);
+    expect(styledLogSpy).toHaveBeenCalledWith(
+      'Por favor, forneça ao menos um tipo de caractere para a senha.',
+      'error'
+    );
+
+    styledLogSpy.mockClear();
+
+    const passwordNoCharTypes = generatePassword(10)
+    expect(passwordNoCharTypes).toBe('');
     expect(styledLogSpy).toHaveBeenCalledTimes(1);
     expect(styledLogSpy).toHaveBeenCalledWith(
       'Por favor, forneça ao menos um tipo de caractere para a senha.',
