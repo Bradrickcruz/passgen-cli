@@ -1,16 +1,13 @@
 import { generatePassword } from '../generatePassword';
-import * as styledLogModule from '../styledLog';
+import { styledLog } from '../styledLog';
 
+jest.mock('../styledLog');
 
 describe('generatePassword', () => {
-  let styledLogSpy: jest.SpyInstance;
-  
-  beforeEach(() => {
-    styledLogSpy = jest.spyOn(styledLogModule, 'styledLog').mockImplementation();
-  })
+  const mockStyledLog = styledLog as jest.MockedFunction<typeof styledLog>;
 
-  afterEach(() => {
-    styledLogSpy.mockClear();
+  beforeEach(() => {
+    mockStyledLog.mockClear();
   });
 
   it('should generate a password of the specified length', () => {
@@ -39,20 +36,20 @@ describe('generatePassword', () => {
   });
 
   it('should show error message and return empty string if no character types are specified', () => {
-    const passwordEmptyCharTypes = generatePassword(10, {})
+    const passwordEmptyCharTypes = generatePassword(10, {});
     expect(passwordEmptyCharTypes).toBe('');
-    expect(styledLogSpy).toHaveBeenCalledTimes(1);
-    expect(styledLogSpy).toHaveBeenCalledWith(
+    expect(mockStyledLog).toHaveBeenCalledTimes(1);
+    expect(mockStyledLog).toHaveBeenCalledWith(
       'Por favor, forneça ao menos um tipo de caractere para a senha.',
       'error'
     );
 
-    styledLogSpy.mockClear();
+    mockStyledLog.mockClear();
 
-    const passwordNoCharTypes = generatePassword(10)
+    const passwordNoCharTypes = generatePassword(10);
     expect(passwordNoCharTypes).toBe('');
-    expect(styledLogSpy).toHaveBeenCalledTimes(1);
-    expect(styledLogSpy).toHaveBeenCalledWith(
+    expect(mockStyledLog).toHaveBeenCalledTimes(1);
+    expect(mockStyledLog).toHaveBeenCalledWith(
       'Por favor, forneça ao menos um tipo de caractere para a senha.',
       'error'
     );
