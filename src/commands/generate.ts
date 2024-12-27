@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import { generatePassword, IPasswordOptions } from '../utils/generatePassword';
 import { styledLog } from '../utils/styledLog';
 import { IGenerateOptions } from './generate.d';
+import { generateValidation } from '../utils/validateGenerateCommand';
 
 export const generateCommand = new Command('generate')
   .description('Gera uma senha forte baseada no número de caracteres')
@@ -18,9 +19,9 @@ export const generateCommand = new Command('generate')
       return;
     }
 
-    if (!generateValidation(length, options)) return;
-
     const passwordLength = parseInt(length, 10);
+    if (!generateValidation(passwordLength, options)) return;
+
     const passwordOptions: IPasswordOptions = {
       useLowercase: true,
       useUppercase: options.uppercase,
@@ -29,41 +30,5 @@ export const generateCommand = new Command('generate')
     };
 
     const password = generatePassword(passwordLength, passwordOptions);
-    if (password !== '')
-      styledLog(password, 'success');
+    if (password !== '') styledLog(password, 'success');
   });
-
-const generateValidation = (
-  length: string,
-  options: IGenerateOptions
-): boolean => {
-  const MIN_PASSWORD_LENGTH = 16;
-  const MAX_PASSWORD_LENGTH = 256;
-
-  if (!length) {
-    styledLog(
-      'Por favor, forneça um número de caracteres para a senha.',
-      'error'
-    );
-    return false;
-  }
-
-  const passwordLength = parseInt(length, 10);
-  if (isNaN(passwordLength) || passwordLength <= 0) {
-    styledLog('Por favor, forneça um número válido maior que 0.', 'error');
-    return false;
-  }
-
-  if (
-    passwordLength < MIN_PASSWORD_LENGTH ||
-    passwordLength > MAX_PASSWORD_LENGTH
-  ) {
-    styledLog(
-      `Por favor, forneça um número entre ${MIN_PASSWORD_LENGTH} e ${MAX_PASSWORD_LENGTH}`,
-      'error'
-    );
-    return false;
-  }
-
-  return true;
-};
