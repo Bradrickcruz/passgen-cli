@@ -6,15 +6,7 @@ export const generateValidation = (
   length: number,
   options: IGenerateOptions
 ): boolean => {
-  if (!length) {
-    styledLog(
-      'Por favor, forneça um número de caracteres para a senha.',
-      'error'
-    );
-    return false;
-  }
-
-  if (isNaN(length) || length <= 0) {
+  if (!length || isNaN(length) || length < 0) {
     styledLog('Por favor, forneça um número válido maior que 0.', 'error');
     return false;
   }
