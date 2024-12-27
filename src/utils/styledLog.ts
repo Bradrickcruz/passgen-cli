@@ -1,8 +1,8 @@
 import chalk from 'chalk';
 
-type Style = 'info' | 'success' | 'warn' | 'error';
+export type StyleType = 'info' | 'success' | 'warn' | 'error';
 
-export const styledLog = (message: string, style: Style = 'info'): void => {
+export const styledLog = (message: string, style: StyleType = 'info'): void => {
   const styles = {
     info: chalk.blue,
     success: chalk.green,
