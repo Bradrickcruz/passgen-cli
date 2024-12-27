@@ -4,7 +4,7 @@
   "description": "Um exemplo de CLI feito com TypeScript para gerar senhas fortes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "ts-node src/index.ts",
     "build": "tsc"
   },
@@ -29,7 +29,10 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@types/jest": "^29.5.14",
     "chalk": "4.1.2",
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
   }
 }
