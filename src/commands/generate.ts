@@ -1,12 +1,7 @@
 import { Command } from 'commander';
 import { generatePassword, IPasswordOptions } from '../utils/generatePassword';
 import { styledLog } from '../utils/styledLog';
-
-interface IGenerateOptions {
-  numbers: boolean;
-  symbols: boolean;
-  uppercase: boolean;
-}
+import { IGenerateOptions } from './generate.d';
 
 export const generateCommand = new Command('generate')
   .description('Gera uma senha forte baseada no número de caracteres')
