@@ -111,7 +111,7 @@ psg --help
 
 ## TODO
 
-- [ ] Implementar testes unitários para garantir a qualidade e robustez do projeto.
+- [x] Implementar testes unitários para garantir a qualidade e robustez do projeto.
 - [ ] Adicionar um comando para validar a força de senhas fornecidas pelo usuário.
 - [ ] Adicionar histórico de senhas geradas.
 
